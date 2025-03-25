@@ -15,7 +15,7 @@ public class CartController {
         this.cart = new Cart(); 
     }
 
-    // 🔹 FIX: Ensure cart is properly accessed
+    
     public boolean addToCart(int id, int qty) {
         Product product = inventory.getProductById(id);
         if (product != null && !product.isExpired() && product.getQuantity() >= qty) {
