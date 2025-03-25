@@ -1,9 +1,9 @@
-package main; // 🔹 FIX: Declare correct package
+package main;
 
-import controller.CartController; // 🔹 FIX: Import the controllers
+import controller.CartController; 
 import controller.InventoryController;
 import model.Inventory;
-import view.InventoryCartGUI; // 🔹 FIX: Ensure GUI is properly imported
+import view.InventoryCartGUI; 
 
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +11,6 @@ public class Main {
         InventoryController inventoryController = new InventoryController(inventory);
         CartController cartController = new CartController(inventory);
 
-        new InventoryCartGUI(inventoryController, cartController); // 🔹 FIX: Ensure correct object creation
+        new InventoryCartGUI(inventoryController, cartController);
     }
 }
