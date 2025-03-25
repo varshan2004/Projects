@@ -1,6 +1,6 @@
-package controller; // 🔹 FIX: Ensure package is declared
+package controller; 
 
-import model.Cart;  // 🔹 FIX: Import the correct Cart class
+import model.Cart; 
 import model.Inventory;
 import model.Product;
 import javax.swing.*;
@@ -12,7 +12,7 @@ public class CartController {
 
     public CartController(Inventory inventory) {
         this.inventory = inventory;
-        this.cart = new Cart(); // 🔹 FIX: Initialize the cart object
+        this.cart = new Cart(); 
     }
 
     // 🔹 FIX: Ensure cart is properly accessed
@@ -32,17 +32,17 @@ public class CartController {
                 int difference = newQuantity - currentCartQty;
     
                 if (difference > 0 && product.getQuantity() >= difference) {
-                    // ✅ Reduce inventory stock if increasing cart quantity
+                    
                     product.setQuantity(product.getQuantity() - difference);
                 } else if (difference < 0) {
-                    // ✅ Restore stock if decreasing cart quantity
+                    
                     product.setQuantity(product.getQuantity() - difference);
                 }
     
                 if (newQuantity > 0) {
                     cart.getCartItems().put(product, newQuantity);
                 } else {
-                    cart.getCartItems().remove(product); // ✅ Remove item if quantity is 0
+                    cart.getCartItems().remove(product); 
                 }
     
                 return true;
@@ -58,7 +58,7 @@ public class CartController {
         for (Product product : cart.getCartItems().keySet()) {
             if (product.getId() == id) {
                 int removedQty = cart.getCartItems().get(product);
-                product.setQuantity(product.getQuantity() + removedQty); // ✅ Restore stock
+                product.setQuantity(product.getQuantity() + removedQty); 
                 cart.getCartItems().remove(product);
                 break;
             }
@@ -75,7 +75,7 @@ public class CartController {
                 return;
             }
         
-            // ✅ Prevent checkout if any item is expired
+            
             for (Product product : cart.getCartItems().keySet()) {
                 if (product.isExpired()) {
                     JOptionPane.showMessageDialog(null, "❌ Checkout failed! Cart contains expired items.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -83,8 +83,8 @@ public class CartController {
                 }
             }
         
-            // ✅ DO NOT reduce inventory again if it was already adjusted when modifying the cart
-            cart.getCartItems().clear(); // ✅ Empty the cart after checkout
+          
+            cart.getCartItems().clear(); 
         }
         
     
@@ -108,7 +108,7 @@ public class CartController {
         return bill.toString();
     }
     public Map<Product, Integer> getCartItems() {
-        return cart.getCartItems(); // ✅ Ensures correct data is returned
+        return cart.getCartItems(); 
     }
     public boolean addToCartByIdOrName(String input, int qty) {
         Product product = null;
