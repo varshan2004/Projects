@@ -28,6 +28,6 @@ public class Product {
 
     public void setQuantity(int quantity) { this.quantity = quantity; }
     
-    // 🔹 FIX: Ensure price can be modified
+   
     public void setPrice(double price) { this.price = price; }
 }
