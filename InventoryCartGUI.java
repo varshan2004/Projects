@@ -1,4 +1,4 @@
-package view; // ✅ Fix: Correct package
+package view; 
 
 import controller.CartController;
 import controller.InventoryController;
@@ -113,7 +113,7 @@ public class InventoryCartGUI extends JFrame {
                 int qty = Integer.parseInt(qtyField.getText());
                 LocalDate expiry = LocalDate.parse(expiryField.getText());
     
-                boolean added = inventoryController.addProduct(id, name, price, qty, expiry); // ✅ Ensure method call is correct
+                boolean added = inventoryController.addProduct(id, name, price, qty, expiry); 
                 if (added) {
                     refreshInventoryTable();
                     JOptionPane.showMessageDialog(this, "✅ Product Added Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -197,7 +197,7 @@ public class InventoryCartGUI extends JFrame {
   
 
    public void refreshCartTable() {
-    cartTableModel.setRowCount(0); // ✅ Clear table before updating
+    cartTableModel.setRowCount(0); 
 
     for (Map.Entry<Product, Integer> entry : cartController.getCartItems().entrySet()) {
         Product product = entry.getKey();
@@ -230,7 +230,7 @@ private void modifyCartItem() {
 
             if (updated) {
                 refreshCartTable();
-                refreshInventoryTable(); // ✅ Ensure inventory updates as well
+                refreshInventoryTable(); 
                 JOptionPane.showMessageDialog(this, "✅ Cart item updated!", "Success", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "❌ Cannot modify item!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -253,15 +253,15 @@ private void removeCartItem() {
     int id = (int) cartTableModel.getValueAt(selectedRow, 0);
     cartController.removeCartItem(id);
     refreshCartTable();
-    refreshInventoryTable(); // ✅ Ensure inventory updates after removal
+    refreshInventoryTable(); 
     JOptionPane.showMessageDialog(this, "🗑️ Item removed from cart!", "Success", JOptionPane.INFORMATION_MESSAGE);
 }
 
 
 // 🔹 CHECKOUT FUNCTION
 private void checkout() {
-    String billContent = cartController.getBillSummary(); // ✅ Ensure this method is called
-    generateBill(billContent); // ✅ Save the bill as a text file
+    String billContent = cartController.getBillSummary();
+    generateBill(billContent); 
 
     cartController.checkout();
     refreshCartTable();
@@ -307,7 +307,7 @@ private void addItemToCart() {
             String input = idOrNameField.getText().trim();
             int quantity = Integer.parseInt(qtyField.getText().trim());
 
-            boolean added = cartController.addToCartByIdOrName(input, quantity); // ✅ Correct method call
+            boolean added = cartController.addToCartByIdOrName(input, quantity); 
 
             if (added) {
                 refreshCartTable();
